@@ -29,7 +29,7 @@ public class ConnectExample {
         Channel channel = CHANNEL_FROM_SOMEWHERE; //reference form somewhere
         // 异步连接到远程节点
         ChannelFuture future = channel.connect(
-                new InetSocketAddress("192.168.0.1", 25));
+                new InetSocketAddress("localhost", 18181));
         // 注册一个ChannelFutureListener，以便在操作完成时获得通知
         future.addListener(new ChannelFutureListener() {
             // 检查操作的状态

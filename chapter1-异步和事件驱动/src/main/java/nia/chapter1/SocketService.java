@@ -7,6 +7,9 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/**
+ * 阻塞式IO
+ */
 public class SocketService {
     //搭建服务器端
     public static void main(String[] args) throws IOException{

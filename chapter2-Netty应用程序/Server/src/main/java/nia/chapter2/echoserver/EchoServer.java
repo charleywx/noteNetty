@@ -38,12 +38,15 @@ public class EchoServer {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(group)
+                    // 用它来建立新accept的连接，用于构造serversocketchannel的工厂类
                     .channel(NioServerSocketChannel.class)
                     // 使用指定的端口设置套接字地址
                     .localAddress(new InetSocketAddress(port))
                     // 添加一个EchoServerHandler 到子 Channel 的 ChannelPipline，使用EchoServerHandler的实例初始化每一个新的Channel
+                    // 为accept channel的pipeline预添加的inboundhandler
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
+                        // 当新连接accept的时候，这个方法会调用
                         public void initChannel(SocketChannel ch) throws Exception {
                             // EchoServerHandler被标注为@Shareable，所以我们可以总是使用同样的实例
                             ch.pipeline().addLast(serverHandler);

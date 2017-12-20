@@ -9,13 +9,16 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
 
+/**
+ * 阻塞式IO
+ */
 public class SocketClient {
     // 搭建客户端
     public static void main(String[] args) throws IOException {
         try {
             // 1、创建客户端Socket，指定服务器地址和端口
             // Socket socket=new Socket("127.0.0.1",5200);
-            Socket socket = new Socket("192.168.1.115", 5209);
+            Socket socket = new Socket("192.168.100.207", 18180);
             System.out.println("客户端启动成功");
             // 2、获取输出流，向服务器端发送信息
             // 向本机的52000端口发出客户请求
@@ -30,9 +33,9 @@ public class SocketClient {
             readline = br.readLine(); // 从系统标准输入读入一字符串
             while (!readline.equals("end")) {
                 // 若从标准输入读入的字符串为 "end"则停止循环
-                write.println(readline);
+                // write.println(readline);
                 // 将从系统标准输入读入的字符串输出到Server
-                write.flush();
+                // write.flush();
                 // 刷新输出流，使Server马上收到该字符串
                 System.out.println("Client:" + readline);
                 // 在系统标准输出上打印读入的字符串
@@ -48,5 +51,5 @@ public class SocketClient {
             System.out.println("can not listen to:" + e);// 出错，打印出错信息
         }
     }
-
+    
 }
